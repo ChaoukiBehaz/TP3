@@ -25,5 +25,7 @@ public class UserServiceTest {
 
         // Vérification
         assertEquals("Behaz Chaouki", retrievedUser.getName());
+
+        verify(mockRepository).findUserById(testUser.getId());
     }
 }
