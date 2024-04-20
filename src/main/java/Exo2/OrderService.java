@@ -2,8 +2,12 @@ package Exo2;
 
 public class OrderService {
     OrderDao Odao;
-    public boolean createOrder(Order Order){
-    Order order = new Order();
+
+    public void setOdao(OrderDao odao) {
+        Odao = odao;
+    }
+
+    public boolean createOrder(Order order){
         return Odao.saveOrder(order);
     }
 }
