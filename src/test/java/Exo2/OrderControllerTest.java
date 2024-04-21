@@ -15,14 +15,20 @@ public class OrderControllerTest {
     public void createOrderTest(){
         OrderService MockOrderService = mock(OrderService.class);
         OrderDao MockOrderDao = mock(OrderDao.class);
-
-
         MockOrderService.setOdao(MockOrderDao);
+        OrderController orderController = new OrderController();
+        orderController.setOrderService(MockOrderService);
+
+
         Order or = new Order();
+
         when(MockOrderService.createOrder(or)).thenReturn(true);
 
-        boolean TestBoolean = MockOrderService.createOrder(or);
+        boolean TestBoolean = orderController.createOrder(or);
         assertEquals(true, TestBoolean);
+        verify(MockOrderService).createOrder(or);
+        //verify(MockOrderDao).saveOrder(or);
 
-}
+
+    }
 }
